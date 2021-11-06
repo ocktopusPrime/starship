@@ -1,0 +1,93 @@
+.action-effect {
+	position: absolute;
+	justify-content: unset;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&.for {
+		top: -105px;
+	}
+
+	&.aft {
+		bottom: -100px;
+	}
+
+	&.port {
+		left: -240px;
+		bottom: 0;
+	}
+
+	&.starboard {
+		right: -240px;
+		bottom: 0;
+	}
+	&.hull {
+		right: 200px;
+		bottom: 162px;
+	}
+}
+
+.effect-message {
+	height: 39px;
+}
+
+.action {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	padding-top: 5px;
+
+	&.minus-plus {
+		position: absolute;
+	}
+}
+
+.damage,
+.restore {
+	width: 65px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	width: 100%;
+	justify-content: space-between;
+
+	> span {
+		border-radius: 6px;
+		font-size: small;
+	}
+
+	.damage-span {
+		background-color: rgb(224, 87, 63);
+	}
+	.restore-span {
+		background-color: rgb(14, 129, 223);
+	}
+}
+
+.action-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.action-effect-value {
+	min-width: 55px;
+	background-color: white;
+	border-radius: 10px;
+	border: 3px solid transparent;
+	color: black;
+	margin: 0 5px 0 5px;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.restored {
+	border: 3px solid rgb(14, 129, 223);
+}
+
+.damaged {
+	border: 3px solid rgb(224, 87, 63);
+}

@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useMemo, useState } from 'react';
+import './App.scss';
+import StarShip from './components/Ship/StarShip';
+import { ShipContext } from './components/ShipContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [shipDetails, setShipDetails] = useState('this is a ship');
+
+	const value = useMemo(() => ({ shipDetails, setShipDetails }), [shipDetails, setShipDetails]);
+
+	return (
+		<div className='App'>
+			<header className='App-header'>
+				<ShipContext.Provider value={value}>
+					<StarShip ship={undefined} />
+				</ShipContext.Provider>
+			</header>
+		</div>
+	);
 }
 
 export default App;

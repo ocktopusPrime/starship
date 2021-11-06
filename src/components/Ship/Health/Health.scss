@@ -1,0 +1,69 @@
+#ship {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 400px;
+	justify-content: space-between;
+	width: 400px;
+	position: relative;
+}
+
+#shield-circle {
+	position: absolute;
+	background-color: transparent;
+	border: 3px solid rgb(46, 243, 200);
+	height: 345px;
+	width: 300px;
+	top: 25px;
+	-moz-border-radius: 345px / 400px;
+	-webkit-border-radius: 345px / 400px;
+}
+
+#ship-circle {
+	position: absolute;
+	background-color: transparent;
+	border: 3px solid rgb(243, 158, 46);
+	height: 240px;
+	width: 140px;
+	top: 77px;
+	-moz-border-radius: 240px / 400px;
+	-webkit-border-radius: 240px / 400px;
+}
+
+.effect-and-value {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.container {
+	width: 90px;
+	border-radius: 10px;
+	border: 3px solid black;
+	background-color: rgb(148, 161, 164);
+	color: black;
+
+	&.selected {
+		border: 3px solid yellow;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.shield-value {
+	border-bottom: 1px solid black;
+}
+
+.shield-label {
+	margin: auto;
+}
+
+#port-hull-starboard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
