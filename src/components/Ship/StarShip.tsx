@@ -1,43 +1,31 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 // import Health from './Health/Health';
 import ShipInfo from './Info/ShipInfo';
-import Ship, { Info, Weapon } from './Ship';
 import Weapons from './Weapons/Weapons';
-import { ShipContext } from '../ShipContext';
+import { ShipContext } from 'components/ShipContext';
+import { Position } from './Ship';
 
-interface Props {
-	ship: Ship;
-}
-
-export default function StarShip({ ship }: Props) {
-	const [shipInfo, setShipInfo] = useState<Ship>(ship);
-	// @ts-ignore
+export default function Starship() {
+	//@ts-ignore
 	const { shipDetails, setShipDetails } = useContext(ShipContext);
-
-	const handleShipUpdate = () => {
-		const tempShip = { ...shipInfo };
-		return tempShip;
-	};
-
-	useEffect(() => {
-		console.log(shipDetails);
-	});
-
 	return (
-		<div id='columns' onClick={() => setShipDetails('something else')}>
-			<ShipInfo info={shipInfo?.info as Info} />
-			<Weapons position='Port' />
+		<div id='columns'>
+			{/* {Object.keys(shipDetails).map((value) => (
+				<div>{shipDetails[value]}</div>
+			))} */}
+			<ShipInfo />
+			<Weapons position={Position.port} />
 			{/* <CrewPositions /> */}
 			{/* <Notes /> */}
 			{/* <Modifiers /> */}
-			<Weapons position='Turrets' />
-			<Weapons position='For' />
+			<Weapons position={Position.turret} />
+			<Weapons position={Position.for} />
 			{/* <Health /> */}
-			<Weapons position='Aft' />
+			<Weapons position={Position.aft} />
 			{/* <CriticalDamage /> */}
 			{/* <Image /> */}
 			{/* <Stats /> */}
-			<Weapons position='Starboard' />
+			<Weapons position={Position.starboard} />
 			{/* <Systems /> */}
 			{/* <ExspansionBays /> */}
 			{/* <CargoPassengers /> */}

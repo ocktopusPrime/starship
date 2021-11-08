@@ -1,4 +1,42 @@
+enum Engine {
+	tiny = 'tiny',
+	small = 'small',
+	medium = 'medium',
+	large = 'large'
+}
+
+enum EquipmentRange {
+	short = 5,
+	medium = 10,
+	long = 20
+}
+
+export enum Position {
+	for = 'For',
+	port = 'Port',
+	starboard = 'Starboard',
+	aft = 'Aft',
+	turret = 'Turret'
+}
+
+enum Size {
+	tiny = 'tiny',
+	small = 'small',
+	medium = 'medium',
+	large = 'large',
+	huge = 'huge',
+	gargantuan = 'gargantuan',
+	colossal = 'colossal'
+}
+
+enum Status {
+	normal = 0,
+	glitching = 1,
+	malfunctioning = 2,
+	wrecked = 3
+}
 export default interface Ship {
+	id: string;
 	info?: Info;
 	weapons?: Weapon[];
 	crew?: CrewPositions;
@@ -17,146 +55,148 @@ export default interface Ship {
 	cargoPassengers?: string[];
 }
 
+export const tempShip: Ship = {
+	id: '1',
+	info: {
+		name: 'Temp Ship',
+		make: 'make',
+		model: 'x2j9',
+		class: 'warrior',
+		tier: 1,
+		size: Size.small,
+		speed: 2
+	},
+	weapons: [
+		{
+			name: 'super gun',
+			type: 'turret',
+			range: EquipmentRange.short,
+			speed: 5,
+			damage: '2d6',
+			pcu: 20,
+			cost: 5,
+			specialProperties: 'magic',
+			position: Position.turret,
+			status: Status.normal
+		},
+		{
+			name: 'blat blat',
+			type: 'gat',
+			range: EquipmentRange.medium,
+			speed: 10,
+			damage: '4d6',
+			pcu: 10,
+			cost: 6,
+			specialProperties: 'physical',
+			position: Position.for,
+			status: Status.normal
+		}
+	]
+};
+
 interface Base {
-	base: number; // +10
-	pilot: number;
-	size: number;
-	misc: number;
+	base?: number; // +10
+	pilot?: number;
+	size?: number;
+	misc?: number;
 }
 
 export interface ArmorClass extends Base {
-	armor: number;
+	armor?: number;
 }
 
 export interface CrewPositions {
-	captain: string[];
-	engineer: string[];
-	gunner: string[];
-	pilot: string[];
-	scienceOfficer: string[];
+	captain?: string[];
+	engineer?: string[];
+	gunner?: string[];
+	pilot?: string[];
+	scienceOfficer?: string[];
 }
 
 export interface CriticalDamage {
-	startRange: number;
-	endRange: number;
-	name: string;
-	status: keyof Status;
+	startRange?: number;
+	endRange?: number;
+	name?: string;
+	status?: Status;
 }
 
 export interface Hull {
-	current: number;
-	total: number;
+	current?: number;
+	total?: number;
 }
 
 export interface Info {
-	name: string;
-	make: string;
-	model: string;
-	class: string;
-	tier: number;
-	size: keyof Size;
-	speed: number;
-	manuverability: Manuverability;
-	rating: number;
-	engine: keyof Engine;
-	pcu: number;
-	powercore: PowerCore;
+	name?: string;
+	make?: string;
+	model?: string;
+	class?: string;
+	tier?: number;
+	size?: Size;
+	speed?: number;
+	manuverability?: Manuverability;
+	rating?: number;
+	engine?: Engine;
+	pcu?: number;
+	powercore?: PowerCore;
 	shields?: Shields;
 	sensors?: Sensor[];
 }
 
 export interface Manuverability {
-	type: string;
-	distanceBeforeTurns: number;
-	pilotingCheckModifier: number;
+	type?: string;
+	distanceBeforeTurns?: number;
+	pilotingCheckModifier?: number;
 }
 
 export interface Modifier {
-	skill: string;
-	value: number;
+	skill?: string;
+	value?: number;
 }
 
 export interface PowerCore {
-	core: string;
-	size: keyof Size;
-	pcuCost: number;
-	bpCost: number;
+	core?: string;
+	size?: Size;
+	pcuCost?: number;
+	bpCost?: number;
 }
 
 export interface Sensor {
-	type: string;
-	range: Range;
-	modifier: number;
-	bpCost: number;
+	type?: string;
+	range?: Range;
+	modifier?: number;
+	bpCost?: number;
 }
 
 export interface Shields {
-	max: number;
-	total: {
-		forShield: number;
-		port: number;
-		starboard: number;
-		aft: number;
+	max?: number;
+	total?: {
+		forShield?: number;
+		port?: number;
+		starboard?: number;
+		aft?: number;
 	};
 
-	current: {
-		forShield: number;
-		port: number;
-		starboard: number;
-		aft: number;
+	current?: {
+		forShield?: number;
+		port?: number;
+		starboard?: number;
+		aft?: number;
 	};
 }
 
 export interface TargetLock extends Base {
-	counter: number;
+	counter?: number;
 }
 
 export interface Weapon {
-	name: string;
-	type: string;
-	range: keyof EquipmentRange;
-	speed: number;
-	damage: string;
-	pcu: number;
-	cost: number;
-	specialProperties: string;
-	position: keyof Position;
-	status: keyof Status;
-}
-
-enum Engine {
-	tiny,
-	small,
-	medium,
-	large,
-}
-
-enum EquipmentRange {
-	short = 5,
-	medium = 10,
-	long = 20,
-}
-
-enum Position {
-	'For',
-	'Port',
-	'Starboard',
-	'Aft',
-	'Turret',
-}
-
-enum Size {
-	tiny,
-	small,
-	medium,
-	large,
-	huge,
-	gargantuan,
-	colossal,
-}
-
-enum Status {
-	glitching = 1,
-	malfunctioning = 2,
-	wrecked = 3,
+	name?: string;
+	type?: string;
+	range?: EquipmentRange;
+	speed?: number;
+	damage?: string;
+	pcu?: number;
+	cost?: number;
+	specialProperties?: string;
+	position?: Position;
+	status?: Status;
 }
