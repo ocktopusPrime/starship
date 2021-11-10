@@ -1,44 +1,41 @@
-import { useState } from 'react';
-import { Info } from '../Ship';
+import ShipContext from 'components/ShipContext';
+import { useContext, useState } from 'react';
+import { Button, TextField } from '@mui/material';
 
-interface Props {
-    info?: Info;
-}
+export default function ShipInfo() {
+	const { shipDetails, setShipDetails } = useContext(ShipContext);
+	const { info } = { ...shipDetails };
+	const [tempInfo, setTempInfo] = useState(info);
+	const [isEdit, setIsEdit] = useState(false);
 
-const tempInfo = {
-    name: '',
-    make: '',
-    model: '',
-    class: '',
-    size: '',
-    speed: '',
-    manuverability: '',
-    rating: '',
-    engine: '',
-    pcu: '',
-    powercore: '',
-    shields: { max: '' },
-    sensors: ''
-};
+	const handleSetTempInfo = (label: string, value: string | number) => {
+		const tempData = { ...tempInfo };
+		const arg = Object.keys(tempData).filter((k) => k === label);
+		console.log(arg);
+	};
 
-export default function ShipInfo({ info }: Props) {
-    const [sInfo, setSInfo] = useState(info || tempInfo);
-
-    return (
-        <div>
-            <div id='ship-name'>{sInfo.name}</div>
-            <div id='ship-name'>{sInfo.make}</div>
-            <div id='ship-name'>{sInfo.model}</div>
-            <div id='ship-name'>{sInfo.class}</div>
-            <div id='ship-name'>{sInfo.size}</div>
-            <div id='ship-name'>{sInfo.speed}</div>
-            <div id='ship-name'>{sInfo.manuverability}</div>
-            <div id='ship-name'>{sInfo.rating}</div>
-            <div id='ship-name'>{sInfo.engine}</div>
-            <div id='ship-name'>{sInfo.pcu}</div>
-            <div id='ship-name'>{sInfo.powercore}</div>
-            <div id='ship-name'>{sInfo.shields?.max}</div>
-            <div id='ship-name'>{sInfo.sensors}</div>
-        </div>
-    );
+	return (
+		<>
+			<Button variant='contained' onClick={() => setIsEdit(!isEdit)}>
+				Edit
+			</Button>
+			<div>
+				Ship Info
+				{info &&
+					Object.entries(info).map(([key, value]) =>
+						isEdit ? (
+							<TextField
+								label={key}
+								defaultValue={value}
+								onChange={() => handleSetTempInfo(key, value)}
+							/>
+						) : (
+							<p>
+								{key} : {value}
+							</p>
+						)
+					)}
+			</div>
+		</>
+	);
 }
