@@ -37,22 +37,22 @@ enum Status {
 }
 export default interface Ship {
 	id: string;
-	info?: Info;
-	weapons?: Weapon[];
-	crew?: CrewPositions;
-	complement?: number; // number of people on the ship
-	notes?: string;
-	modifiers?: Modifier[];
-	image?: string;
-	armorClass?: ArmorClass;
-	targetLock?: TargetLock;
-	hull?: Hull;
-	damageTrheshold?: number;
-	criticalThreshold?: number;
-	criticalDamage?: CriticalDamage[];
-	systems?: string[];
-	expansionBays?: string[];
-	cargoPassengers?: string[];
+	info: Info;
+	weapons: Weapon[];
+	crew: CrewPositions;
+	complement: number; // number of people on the ship
+	notes: string;
+	modifiers: Modifier[];
+	image: string;
+	armorClass: ArmorClass;
+	targetLock: TargetLock;
+	hull: Hull;
+	damageTrheshold: number;
+	criticalThreshold: number;
+	criticalDamage: CriticalDamage[];
+	systems: string[];
+	expansionBays: string[];
+	cargoPassengers: string[];
 }
 
 export const tempShip: Ship = {
@@ -65,7 +65,7 @@ export const tempShip: Ship = {
 		tier: 1,
 		size: Size.small,
 		speed: 2
-	},
+	} as Info,
 	weapons: [
 		{
 			name: 'super gun',
@@ -91,112 +91,126 @@ export const tempShip: Ship = {
 			position: Position.for,
 			status: Status.normal
 		}
-	]
+	],
+	crew: {} as CrewPositions,
+	complement: 0, // number of people on the ship
+	notes: '',
+	modifiers: [],
+	image: '',
+	armorClass: {} as ArmorClass,
+	targetLock: {} as TargetLock,
+	hull: {} as Hull,
+	damageTrheshold: 0,
+	criticalThreshold: 0,
+	criticalDamage: [],
+	systems: [],
+	expansionBays: [],
+	cargoPassengers: []
 };
 
 interface Base {
-	base?: number; // +10
-	pilot?: number;
-	size?: number;
-	misc?: number;
+	base: number; // +10
+	pilot: number;
+	size: number;
+	misc: number;
 }
 
 export interface ArmorClass extends Base {
-	armor?: number;
+	armor: number;
 }
 
 export interface CrewPositions {
-	captain?: string[];
-	engineer?: string[];
-	gunner?: string[];
-	pilot?: string[];
-	scienceOfficer?: string[];
+	captain: string[];
+	engineer: string[];
+	gunner: string[];
+	pilot: string[];
+	scienceOfficer: string[];
 }
 
 export interface CriticalDamage {
-	startRange?: number;
-	endRange?: number;
-	name?: string;
-	status?: Status;
+	startRange: number;
+	endRange: number;
+	name: string;
+	status: Status;
 }
 
 export interface Hull {
-	current?: number;
-	total?: number;
+	current: number;
+	total: number;
 }
 
 export interface Info {
-	name?: string;
-	make?: string;
-	model?: string;
-	class?: string;
-	tier?: number;
-	size?: Size;
-	speed?: number;
-	manuverability?: Manuverability;
-	rating?: number;
-	engine?: Engine;
-	pcu?: number;
-	powercore?: PowerCore;
-	shields?: Shields;
-	sensors?: Sensor[];
+	name: string;
+	make: string;
+	model: string;
+	class: string;
+	tier: number;
+	size: Size;
+	speed: number;
+	manuverability: Manuverability;
+	rating: number;
+	engine: Engine;
+	pcu: number;
+	powercore: PowerCore;
+	shields: Shields;
+	sensors: Sensor[];
 }
 
 export interface Manuverability {
-	type?: string;
-	distanceBeforeTurns?: number;
-	pilotingCheckModifier?: number;
+	type: string;
+	distanceBeforeTurns: number;
+	pilotingCheckModifier: number;
 }
 
 export interface Modifier {
-	skill?: string;
-	value?: number;
+	skill: string;
+	value: number;
 }
 
 export interface PowerCore {
-	core?: string;
-	size?: Size;
-	pcuCost?: number;
-	bpCost?: number;
+	core: string;
+	size: Size;
+	pcuCost: number;
+	bpCost: number;
 }
 
 export interface Sensor {
-	type?: string;
-	range?: Range;
-	modifier?: number;
-	bpCost?: number;
+	type: string;
+	range: Range;
+	modifier: number;
+	bpCost: number;
 }
 
 export interface Shields {
-	max?: number;
-	total?: {
-		forShield?: number;
-		port?: number;
-		starboard?: number;
-		aft?: number;
+	max: number;
+	total: {
+		forShield: number;
+		port: number;
+		starboard: number;
+		aft: number;
 	};
 
-	current?: {
-		forShield?: number;
-		port?: number;
-		starboard?: number;
-		aft?: number;
+	current: {
+		forShield: number;
+		port: number;
+		starboard: number;
+		aft: number;
 	};
 }
 
 export interface TargetLock extends Base {
-	counter?: number;
+	counter: number;
 }
 
 export interface Weapon {
-	name?: string;
-	type?: string;
-	range?: EquipmentRange;
-	speed?: number;
-	damage?: string;
-	pcu?: number;
-	cost?: number;
-	specialProperties?: string;
-	position?: Position;
-	status?: Status;
+	name: string;
+	type: string;
+	range: EquipmentRange;
+	speed: number;
+	damage: string;
+	pcu: number;
+	cost: number;
+	specialProperties: string;
+	position: Position;
+	status: Status;
 }

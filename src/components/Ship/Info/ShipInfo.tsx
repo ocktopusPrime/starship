@@ -1,40 +1,34 @@
 import ShipContext from 'components/ShipContext';
-import { useContext, useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { useContext } from 'react';
+import { Typography } from '@mui/material';
+import './ShipInfo.scss';
 
 export default function ShipInfo() {
 	const { shipDetails, setShipDetails } = useContext(ShipContext);
 	const { info } = { ...shipDetails };
-	const [tempInfo, setTempInfo] = useState(info);
-	const [isEdit, setIsEdit] = useState(false);
 
-	const handleSetTempInfo = (label: string, value: string | number) => {
-		const tempData = { ...tempInfo };
-		const arg = Object.keys(tempData).filter((k) => k === label);
-		console.log(arg);
+	const handleSetTempInfo = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const attribute = event.target.name;
+		const value = event.target.value;
+		setShipDetails({ ...shipDetails, info: { ...shipDetails.info, [attribute]: value } });
 	};
 
 	return (
 		<>
-			<Button variant='contained' onClick={() => setIsEdit(!isEdit)}>
-				Edit
-			</Button>
-			<div>
+			<div id='ship-info'>
 				Ship Info
 				{info &&
-					Object.entries(info).map(([key, value]) =>
-						isEdit ? (
-							<TextField
-								label={key}
+					Object.entries(info).map(([attribute, value]) => (
+						<div className='info-text'>
+							<Typography>{attribute}:</Typography>
+							<input
+								type='text'
+								name={attribute}
 								defaultValue={value}
-								onChange={() => handleSetTempInfo(key, value)}
+								onChange={handleSetTempInfo}
 							/>
-						) : (
-							<p>
-								{key} : {value}
-							</p>
-						)
-					)}
+						</div>
+					))}
 			</div>
 		</>
 	);

@@ -1,12 +1,12 @@
 import { Dispatch, createContext, SetStateAction } from 'react';
-import Ship from './Ship/Ship';
+import Ship, { tempShip } from './Ship/Ship';
 
 export interface IShipContext {
-	shipDetails: Ship | null;
-	setShipDetails: Dispatch<SetStateAction<Ship | null>>;
+	shipDetails: Ship;
+	setShipDetails: Dispatch<SetStateAction<Ship>>;
 }
 
 export default createContext<IShipContext>({
-	shipDetails: null,
+	shipDetails: tempShip,
 	setShipDetails: () => undefined
 });

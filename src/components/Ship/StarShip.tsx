@@ -1,7 +1,4 @@
-// import Health from './Health/Health';
 import ShipInfo from './Info/ShipInfo';
-import Weapons from './Weapons/Weapons';
-import { Position } from './Ship';
 
 export default function Starship() {
 	return (

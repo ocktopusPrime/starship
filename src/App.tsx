@@ -9,7 +9,7 @@ import './App.scss';
 export default function App() {
 	// const [selectedShip, setSelectedShip] = useState('1');
 	const [shipList, setShipList] = useState([tempShip]);
-	const [shipDetails, setShipDetails] = useState<Ship | null>(tempShip);
+	const [shipDetails, setShipDetails] = useState<Ship>(tempShip);
 	const value: IShipContext = useMemo(
 		() => ({ shipDetails, setShipDetails }),
 		[shipDetails, setShipDetails]
@@ -28,7 +28,7 @@ export default function App() {
 				</ul>
 			</nav>
 			<div className='App'>
-				<ShipContext.Provider value={{ shipDetails, setShipDetails }}>
+				<ShipContext.Provider value={value}>
 					<Routes>
 						<Route path='/' element={<ShipManagement shipList={shipList} />} />
 						<Route path='/starship' element={<Starship />} />

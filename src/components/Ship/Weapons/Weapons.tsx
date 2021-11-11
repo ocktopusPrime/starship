@@ -1,5 +1,5 @@
 import ShipContext from 'components/ShipContext';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Position, Weapon } from '../Ship';
 
 interface Props {
@@ -9,7 +9,6 @@ interface Props {
 export default function Weapons({ position }: Props) {
 	const { shipDetails } = useContext(ShipContext);
 	const { weapons } = { ...shipDetails };
-	const [tempWeapons, setTempWeapons] = useState(weapons);
 	const weaponList: Weapon[] =
 		weapons?.filter((weapon: Weapon) => weapon.position === position) || [];
 
