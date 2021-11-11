@@ -1,15 +1,19 @@
 import Ship from 'components/Ship/Ship';
+import { Button } from '@mui/material';
 
 interface Props {
 	shipList: Ship[];
 }
 export default function ShipManagement({ shipList }: Props) {
 	return (
-		<div>
-			<p>ShipManagement</p>
+		<div id='ship-management'>
+			ShipManagement
 			{shipList.map((ship: Ship) => (
 				<p>{ship.info?.name}</p>
 			))}
+			<Button variant='contained' color='success'>
+				Add Ship
+			</Button>
 		</div>
 	);
 }

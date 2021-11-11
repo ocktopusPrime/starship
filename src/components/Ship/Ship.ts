@@ -55,59 +55,6 @@ export default interface Ship {
 	cargoPassengers: string[];
 }
 
-export const tempShip: Ship = {
-	id: '1',
-	info: {
-		name: 'Temp Ship',
-		make: 'make',
-		model: 'x2j9',
-		class: 'warrior',
-		tier: 1,
-		size: Size.small,
-		speed: 2
-	} as Info,
-	weapons: [
-		{
-			name: 'super gun',
-			type: 'turret',
-			range: EquipmentRange.short,
-			speed: 5,
-			damage: '2d6',
-			pcu: 20,
-			cost: 5,
-			specialProperties: 'magic',
-			position: Position.turret,
-			status: Status.normal
-		},
-		{
-			name: 'blat blat',
-			type: 'gat',
-			range: EquipmentRange.medium,
-			speed: 10,
-			damage: '4d6',
-			pcu: 10,
-			cost: 6,
-			specialProperties: 'physical',
-			position: Position.for,
-			status: Status.normal
-		}
-	],
-	crew: {} as CrewPositions,
-	complement: 0, // number of people on the ship
-	notes: '',
-	modifiers: [],
-	image: '',
-	armorClass: {} as ArmorClass,
-	targetLock: {} as TargetLock,
-	hull: {} as Hull,
-	damageTrheshold: 0,
-	criticalThreshold: 0,
-	criticalDamage: [],
-	systems: [],
-	expansionBays: [],
-	cargoPassengers: []
-};
-
 interface Base {
 	base: number; // +10
 	pilot: number;
@@ -214,3 +161,143 @@ export interface Weapon {
 	position: Position;
 	status: Status;
 }
+
+// default and temp ship values
+export const defaultShip: Ship = {
+	id: '',
+	info: {
+		name: '',
+		make: '',
+		model: '',
+		class: '',
+		tier: 0,
+		size: Size.small,
+		speed: 0,
+		manuverability: {
+			type: '',
+			distanceBeforeTurns: 0,
+			pilotingCheckModifier: 0
+		},
+		rating: 0,
+		engine: Engine.tiny,
+		pcu: 0,
+		powercore: {
+			core: '',
+			size: Size.small,
+			pcuCost: 0,
+			bpCost: 0
+		},
+		shields: {
+			max: 0,
+			total: {
+				forShield: 0,
+				port: 0,
+				starboard: 0,
+				aft: 0
+			},
+
+			current: {
+				forShield: 0,
+				port: 0,
+				starboard: 0,
+				aft: 0
+			}
+		},
+		sensors: []
+	},
+	weapons: [],
+	crew: {
+		captain: [],
+		engineer: [],
+		gunner: [],
+		pilot: [],
+		scienceOfficer: []
+	},
+	complement: 0, // number of people on the ship
+	notes: '',
+	modifiers: [],
+	image: '',
+	armorClass: {
+		base: 0, // +10
+		pilot: 0,
+		size: 0,
+		misc: 0,
+		armor: 0
+	},
+	targetLock: {
+		base: 0, // +10
+		pilot: 0,
+		size: 0,
+		misc: 0,
+		counter: 0
+	},
+	hull: {
+		current: 0,
+		total: 0
+	},
+	damageTrheshold: 0,
+	criticalThreshold: 0,
+	criticalDamage: [],
+	systems: [],
+	expansionBays: [],
+	cargoPassengers: []
+};
+
+export const tempShip: Ship = {
+	id: '1',
+	info: {
+		name: 'Temp Ship',
+		make: 'make',
+		model: 'x2j9',
+		class: 'warrior',
+		tier: 1,
+		size: Size.small,
+		speed: 2
+	} as Info,
+	weapons: [
+		{
+			name: 'super gun',
+			type: 'turret',
+			range: EquipmentRange.short,
+			speed: 5,
+			damage: '2d6',
+			pcu: 20,
+			cost: 5,
+			specialProperties: 'magic',
+			position: Position.turret,
+			status: Status.normal
+		},
+		{
+			name: 'blat blat',
+			type: 'gat',
+			range: EquipmentRange.medium,
+			speed: 10,
+			damage: '4d6',
+			pcu: 10,
+			cost: 6,
+			specialProperties: 'physical',
+			position: Position.for,
+			status: Status.normal
+		}
+	],
+	crew: {
+		captain: ['squadbreaker'],
+		engineer: ['goliath'],
+		gunner: ['J477'],
+		pilot: ['Capy', 'other'],
+		scienceOfficer: []
+	},
+	complement: 0, // number of people on the ship
+	notes: '',
+	modifiers: [],
+	image: '',
+	armorClass: {} as ArmorClass,
+	targetLock: {} as TargetLock,
+	hull: {} as Hull,
+	damageTrheshold: 0,
+	criticalThreshold: 0,
+	criticalDamage: [],
+	systems: [],
+	expansionBays: [],
+	cargoPassengers: []
+};

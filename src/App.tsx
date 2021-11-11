@@ -27,7 +27,7 @@ export default function App() {
 					</li>
 				</ul>
 			</nav>
-			<div className='App'>
+			<div id='App'>
 				<ShipContext.Provider value={value}>
 					<Routes>
 						<Route path='/' element={<ShipManagement shipList={shipList} />} />
