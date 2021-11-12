@@ -1,4 +1,8 @@
 import CrewPositions from './CrewPositions/CrewPositions';
+import CriticalDamage from './CriticalDamage/CriticalDamage';
+import ShipPortrait from './ShipPortrait/ShipPortrait';
+import Modifiers from './Modifiers/Modifiers';
+import Notes from './Notes/Notes';
 import ShipInfo from './Info/ShipInfo';
 
 export default function Starship() {
@@ -6,7 +10,7 @@ export default function Starship() {
 		<div id='columns'>
 			<ShipInfo />
 			{/* <Weapons position={Position.port} /> */}
-			<CrewPositions />
+			{/* <CrewPositions /> */}
 			{/* <Notes /> */}
 			{/* <Modifiers /> */}
 			{/* <Weapons position={Position.turret} /> */}
@@ -14,7 +18,7 @@ export default function Starship() {
 			{/* <Health /> */}
 			{/* <Weapons position={Position.aft} /> */}
 			{/* <CriticalDamage /> */}
-			{/* <Image /> */}
+			<ShipPortrait />
 			{/* <Stats /> */}
 			{/* <Weapons position={Position.starboard} /> */}
 			{/* <Systems /> */}

@@ -30,10 +30,10 @@ enum Size {
 }
 
 enum Status {
-	normal = 0,
-	glitching = 1,
-	malfunctioning = 2,
-	wrecked = 3
+	normal = 'normal',
+	glitching = 'glitching',
+	malfunctioning = 'malfunctioning',
+	wrecked = 'wrecked'
 }
 export default interface Ship {
 	id: string;
@@ -67,11 +67,11 @@ export interface ArmorClass extends Base {
 }
 
 export interface CrewPositions {
-	captain: string[];
-	engineer: string[];
-	gunner: string[];
-	pilot: string[];
-	scienceOfficer: string[];
+	captain: string;
+	engineer: string;
+	gunner: string;
+	pilot: string;
+	scienceOfficer: string;
 }
 
 export interface CriticalDamage {
@@ -79,6 +79,7 @@ export interface CriticalDamage {
 	endRange: number;
 	name: string;
 	status: Status;
+	effect: string;
 }
 
 export interface Hull {
@@ -207,11 +208,11 @@ export const defaultShip: Ship = {
 	},
 	weapons: [],
 	crew: {
-		captain: [],
-		engineer: [],
-		gunner: [],
-		pilot: [],
-		scienceOfficer: []
+		captain: '',
+		engineer: '',
+		gunner: '',
+		pilot: '',
+		scienceOfficer: ''
 	},
 	complement: 0, // number of people on the ship
 	notes: '',
@@ -281,22 +282,63 @@ export const tempShip: Ship = {
 		}
 	],
 	crew: {
-		captain: ['squadbreaker'],
-		engineer: ['goliath'],
-		gunner: ['J477'],
-		pilot: ['Capy', 'other'],
-		scienceOfficer: []
+		captain: 'squadbreaker',
+		engineer: 'goliath',
+		gunner: 'J477',
+		pilot: 'Capy, other',
+		scienceOfficer: ''
 	},
 	complement: 0, // number of people on the ship
 	notes: '',
-	modifiers: [],
+	modifiers: [
+		{
+			skill: 'piloting',
+			value: -2
+		}
+	],
 	image: '',
 	armorClass: {} as ArmorClass,
 	targetLock: {} as TargetLock,
 	hull: {} as Hull,
 	damageTrheshold: 0,
 	criticalThreshold: 0,
-	criticalDamage: [],
+	criticalDamage: [
+		{
+			startRange: 1,
+			endRange: 10,
+			name: 'life support',
+			effect: 'Condition applies to all captain actions',
+			status: Status.normal
+		},
+		{
+			startRange: 11,
+			endRange: 30,
+			name: 'sensors',
+			effect: 'Condition applies to all science officer actions',
+			status: Status.normal
+		},
+		{
+			startRange: 31,
+			endRange: 60,
+			name: 'weapons array',
+			effect: 'Randomly determine one arc containing weapons; condition applies to all gunner actions using weapons in that arc (a turret counts as being in all arcs)',
+			status: Status.normal
+		},
+		{
+			startRange: 61,
+			endRange: 80,
+			name: 'engines',
+			effect: 'Condition applies to all pilot actions',
+			status: Status.normal
+		},
+		{
+			startRange: 81,
+			endRange: 100,
+			name: 'power core',
+			effect: 'Condition applies to all engineer actions except hold it together and patch; a malfunctioning or wrecked power core affects other crew members’ actions',
+			status: Status.normal
+		}
+	],
 	systems: [],
 	expansionBays: [],
 	cargoPassengers: []

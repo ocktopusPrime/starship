@@ -2,26 +2,36 @@ import { useContext } from 'react';
 import ShipContext from 'components/ShipContext';
 import { Typography } from '@mui/material';
 
-export default function CrewPositions() {
-	const { shipDetails } = useContext(ShipContext);
-	const { crew } = shipDetails;
+import '../Info/ShipInfo.scss';
 
-	const normalizeValue = (value: string[]) => {
-		let str = '';
-		value.forEach((crewMember) => (str = `${str} ${crewMember}`));
-		return str;
+export default function CrewPositions() {
+	const { shipDetails, setShipDetails } = useContext(ShipContext);
+	const { crew } = { ...shipDetails };
+
+	// this would be cool if we could say which weapon someone was on so that
+	// it could relate them to the weapon's position and visually show it.
+
+	const handleUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const attribute = event.target.name;
+		const value = event.target.value;
+		setShipDetails({ ...shipDetails, crew: { ...shipDetails.crew, [attribute]: value } });
 	};
+
 	return (
 		<div id='crew-positions'>
-			{Object.entries(crew).map(([k, v]) => {
-				const parsedValue = normalizeValue(v);
-				return (
-					<div className='crew'>
-						<Typography>{k}:</Typography>
-						<input type='text' name={k} value={parsedValue} placeholder='EMPTY' />
-					</div>
-				);
-			})}
+			Crew Positions
+			{Object.entries(crew).map(([attribute, value]) => (
+				<div className='crew'>
+					<Typography>{attribute}:</Typography>
+					<input
+						type='text'
+						name={attribute}
+						value={value}
+						placeholder='EMPTY'
+						onChange={handleUpdate}
+					/>
+				</div>
+			))}
 		</div>
 	);
 }
