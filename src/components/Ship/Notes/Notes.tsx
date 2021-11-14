@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import ShipContext from 'components/ShipContext';
 
 export default function Notes() {

@@ -1,4 +1,4 @@
-import Ship from 'components/Ship/Ship';
+import Ship from 'components/ShipData/Ship';
 import { Button } from '@mui/material';
 
 interface Props {

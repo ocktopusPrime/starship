@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import ShipManagement from 'components/ShipManagement/ShipManagement';
 import Starship from './components/Ship/Starship';
-import Ship, { tempShip } from 'components/Ship/Ship';
+import Ship from 'components/ShipData/Ship';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ShipContext, { IShipContext } from './components/ShipContext';
+import tempShip from 'components/ShipData/TempShip';
 import './App.scss';
 
 export default function App() {

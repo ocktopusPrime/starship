@@ -1,5 +1,6 @@
 import { Dispatch, createContext, SetStateAction } from 'react';
-import Ship, { tempShip } from './Ship/Ship';
+import Ship from './ShipData/Ship';
+import tempShip from './ShipData/TempShip';
 
 export interface IShipContext {
 	shipDetails: Ship;
