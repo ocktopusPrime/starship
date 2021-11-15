@@ -26,18 +26,10 @@ export const tempShip: Ship = {
 		},
 		shields: {
 			max: 60,
-			total: {
-				forShield: 15,
-				port: 15,
-				starboard: 15,
-				aft: 15
-			},
-			current: {
-				forShield: 6,
-				port: 7,
-				starboard: 8,
-				aft: 0
-			}
+			forShield: [6, 15],
+			port: [7, 15],
+			starboard: [8, 15],
+			aft: [0, 15]
 		},
 		sensors: {
 			type: 'advanced',
@@ -102,10 +94,7 @@ export const tempShip: Ship = {
 		misc: 0,
 		counter: 0
 	},
-	hull: {
-		current: 80,
-		total: 80
-	},
+	hull: [80, 80],
 	damageTrheshold: 0,
 	criticalThreshold: 0,
 	criticalDamage: [

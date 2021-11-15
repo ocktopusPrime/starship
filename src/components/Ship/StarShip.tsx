@@ -15,13 +15,13 @@ export default function Starship() {
 	return (
 		<div id='columns'>
 			{/* <ShipInfo /> */}
-			<Weapons position={Position.port} />
+			{/* <Weapons position={Position.port} /> */}
 			{/* <CrewPositions /> */}
 			{/* <Notes /> */}
 			{/* <Modifiers /> */}
-			<Weapons position={Position.turret} />
+			{/* <Weapons position={Position.turret} /> */}
 			{/* <Weapons position={Position.for} /> */}
-			{/* <Health /> */}
+			<Health />
 			{/* <Weapons position={Position.aft} /> */}
 			{/* <CriticalDamage /> */}
 			{/* <ShipPortrait /> */}

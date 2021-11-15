@@ -45,12 +45,13 @@
 
 .damage,
 .restore {
-	width: 65px;
 	display: flex;
 	flex-direction: column;
-	row-gap: 5px;
+	grid-row-gap: 5px;
 	width: 100%;
 	justify-content: space-between;
+	padding-left: 5px;
+	padding-right: 5px;
 
 	> span {
 		border-radius: 6px;
@@ -82,6 +83,10 @@
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+.css-5lbw0b-MuiTypography-root {
+	margin: auto;
 }
 
 .restored {

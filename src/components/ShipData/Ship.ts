@@ -16,7 +16,8 @@ export enum Position {
 	port = 'Port',
 	starboard = 'Starboard',
 	aft = 'Aft',
-	turret = 'Turret'
+	turret = 'Turret',
+	hull = 'Hull'
 }
 
 export enum Size {
@@ -46,7 +47,7 @@ export default interface Ship {
 	image: string;
 	armorClass: ArmorClass;
 	targetLock: TargetLock;
-	hull: Hull;
+	hull: number[]; // [current, total]
 	damageTrheshold: number;
 	criticalThreshold: number;
 	criticalDamage: CriticalDamage[];
@@ -80,11 +81,6 @@ export interface CriticalDamage {
 	name: string;
 	status: Status;
 	effect: string;
-}
-
-export interface Hull {
-	current: number;
-	total: number;
 }
 
 export interface Info {
@@ -131,19 +127,11 @@ export interface Sensor {
 
 export interface Shields {
 	max: number;
-	total: {
-		forShield: number;
-		port: number;
-		starboard: number;
-		aft: number;
-	};
-
-	current: {
-		forShield: number;
-		port: number;
-		starboard: number;
-		aft: number;
-	};
+	// [current, total]
+	forShield: number[];
+	port: number[];
+	starboard: number[];
+	aft: number[];
 }
 
 export interface TargetLock extends Base {

@@ -8,6 +8,10 @@ interface Props {
 	position: Position;
 }
 
+const handleSetWeaponStatus = () => {
+	console.log('we callin');
+};
+
 export default function Weapons({ position }: Props) {
 	const { shipDetails } = useContext(ShipContext);
 	const { weapons } = { ...shipDetails };
@@ -27,14 +31,18 @@ export default function Weapons({ position }: Props) {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{weaponList.map((weapon: any, idx) => (
-						<TableRow key={`name${idx}`}>
-							<TableCell>{weapon.name}</TableCell>
-							<TableCell>{weapon.damage}</TableCell>
-							<TableCell>{weapon.range}</TableCell>
-							<TableCell>{weapon.status}</TableCell>
-						</TableRow>
-					))}
+					{weaponList.length > 0 &&
+						weaponList.map((weapon: any, idx) => (
+							<TableRow key={`name${idx}`}>
+								<TableCell>{weapon.name}</TableCell>
+								<TableCell>{weapon.damage}</TableCell>
+								<TableCell>{weapon.range}</TableCell>
+								{/* This is going to be a button to toggle/update the status of the weapon */}
+								<TableCell>{weapon.status}</TableCell>
+							</TableRow>
+						))}
+
+					<TableCell>+ Add a weapon</TableCell>
 				</TableBody>
 			</Table>
 		</div>

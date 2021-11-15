@@ -26,19 +26,10 @@ export const defaultShip: Ship = {
 		},
 		shields: {
 			max: 0,
-			total: {
-				forShield: 0,
-				port: 0,
-				starboard: 0,
-				aft: 0
-			},
-
-			current: {
-				forShield: 0,
-				port: 0,
-				starboard: 0,
-				aft: 0
-			}
+			forShield: [0, 0],
+			port: [0, 0],
+			starboard: [0, 0],
+			aft: [0, 0]
 		},
 		sensors: {
 			type: '',
@@ -73,10 +64,7 @@ export const defaultShip: Ship = {
 		misc: 0,
 		counter: 0
 	},
-	hull: {
-		current: 0,
-		total: 0
-	},
+	hull: [0, 0],
 	damageTrheshold: 0,
 	criticalThreshold: 0,
 	criticalDamage: [],

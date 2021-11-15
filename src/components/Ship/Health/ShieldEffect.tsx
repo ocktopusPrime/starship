@@ -40,8 +40,10 @@ export default function ShieldEffect({ updateShield, position }: Props) {
 	}
 
 	return (
-		<div className={`action-effect ${position}`}>
-			<span className='effect-message'>{message}</span>
+		<div className={`action-effect ${position.toLowerCase()}`}>
+			<Typography variant='h5' className='effect-message'>
+				{message}
+			</Typography>
 			<div className='action'>
 				<div className='damage red'>
 					<div className='action-buttons'>
@@ -51,12 +53,13 @@ export default function ShieldEffect({ updateShield, position }: Props) {
 					<span className='damage-span'>Damage</span>
 				</div>
 
-				<div
+				<Typography
+					variant='h4'
 					className={`action-effect-value ${style}`}
 					onClick={() => updateShield(effectValue)}
 				>
 					{effectValue}
-				</div>
+				</Typography>
 
 				<div className='restore'>
 					<div className='action-buttons'>

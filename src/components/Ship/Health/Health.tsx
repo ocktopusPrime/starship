@@ -1,103 +1,65 @@
-import { useState } from 'react';
-import { Typography } from '@mui/material';
-import ShieldEffect from './ShieldEffect';
+import { useState, useContext, useEffect } from 'react';
+import ShipContext from 'components/ShipContext';
+import ShieldComponent from './ShieldComponent';
+import { Position } from 'components/ShipData/Ship';
 import './Health.scss';
 
 export default function Health() {
-	// [current value, max value]
-	const [forShield, setForShield] = useState([6, 12]);
-	const [starboard, setStarboard] = useState([7, 12]);
-	const [aft, setAft] = useState([8, 12]);
-	const [port, setPort] = useState([4, 12]);
-	const [hull, setHull] = useState([20, 20]);
+	const { shipDetails, setShipDetails } = useContext(ShipContext);
 
+	// [current, total]
+	const { forShield, starboard, aft, port } = { ...shipDetails.info.shields };
+	const hull = { ...shipDetails.hull };
+
+	// list of the effect displays that are open
 	const [shieldEffectOpen, setShieldEffectOpen] = useState<string[]>([]);
-	const shipPositions = ['For', 'Port', 'Starboard', 'Aft', 'Hull'];
 
-	const isEffectOpen = (label: string) => shieldEffectOpen.includes(label);
-
-	const setSelected = (label: string) => {
-		if (shieldEffectOpen.includes(label)) return 'selected';
-	};
+	const isOpen = (position: string) => shieldEffectOpen.includes(position.toLowerCase());
 
 	const handleShowShieldEffect = (label: string) => {
 		const tempArray = [...shieldEffectOpen];
 		const index = tempArray.indexOf(label, 0);
 
-		index > -1 ? tempArray.splice(index, 1) : tempArray.push(label);
+		index > -1 ? tempArray.splice(index, 1) : tempArray.push(label.toLowerCase());
 		setShieldEffectOpen(tempArray);
-	};
-
-	const shieldComponent = (label: string, position: string, shieldValue: number[]) => {
-		const handleShieldUpdate = (effectValue: number) => {
-			let tempArray: number[] = [];
-			const total = shieldValue[0] + effectValue < 0 ? 0 : shieldValue[0] + effectValue;
-			const carryover =
-				effectValue < 0 && Math.abs(effectValue) > Math.abs(shieldValue[0])
-					? Math.abs(effectValue) - Math.abs(shieldValue[0])
-					: undefined;
-
-			if (label === shipPositions[0]) {
-				tempArray = [...forShield];
-				tempArray[0] = total;
-				setForShield(tempArray);
-			} else if (label === shipPositions[1]) {
-				tempArray = [...port];
-				tempArray[0] = total;
-				setPort(tempArray);
-			} else if (label === shipPositions[2]) {
-				tempArray = [...starboard];
-				tempArray[0] = total;
-				setStarboard(tempArray);
-			} else if (label === shipPositions[3]) {
-				tempArray = [...aft];
-				tempArray[0] = total;
-				setAft(tempArray);
-			} else if (label === shipPositions[4]) {
-				tempArray = [...hull];
-				tempArray[0] = total;
-				setHull(tempArray);
-			}
-
-			if (carryover) {
-				tempArray = [...hull];
-				tempArray[0] = hull[0] - carryover;
-				setHull(tempArray);
-			}
-		};
-
-		return (
-			<div className='effect-and-value'>
-				{isEffectOpen(label) && (
-					<ShieldEffect
-						updateShield={(val: number) => handleShieldUpdate(val)}
-						position={position}
-					/>
-				)}
-				<div
-					className={`container ${setSelected(label)}`}
-					onClick={() => handleShowShieldEffect(label)}
-				>
-					<div className='shield-value'>
-						{shieldValue[0]}/{shieldValue[1]}
-					</div>
-					<Typography className='shield-label'>{label}</Typography>
-				</div>
-			</div>
-		);
 	};
 
 	return (
 		<div id='ship'>
 			<div id='shield-circle' />
 			<div id='ship-circle' />
-			{shieldComponent(shipPositions[0], shipPositions[0].toLowerCase(), forShield)}
+			<ShieldComponent
+				position={Position.for}
+				shieldValue={forShield}
+				isOpen={isOpen(Position.for)}
+				toggleDisplayShieldEffect={handleShowShieldEffect}
+			/>
 			<div id='port-hull-starboard'>
-				{shieldComponent(shipPositions[1], shipPositions[1].toLowerCase(), port)}
-				{shieldComponent(shipPositions[4], shipPositions[4].toLowerCase(), hull)}
-				{shieldComponent(shipPositions[2], shipPositions[2].toLowerCase(), starboard)}
+				<ShieldComponent
+					position={Position.port}
+					shieldValue={port}
+					isOpen={isOpen(Position.port)}
+					toggleDisplayShieldEffect={handleShowShieldEffect}
+				/>
+				<ShieldComponent
+					position={Position.hull}
+					shieldValue={hull}
+					isOpen={isOpen(Position.hull)}
+					toggleDisplayShieldEffect={handleShowShieldEffect}
+				/>
+				<ShieldComponent
+					position={Position.starboard}
+					shieldValue={starboard}
+					isOpen={isOpen(Position.starboard)}
+					toggleDisplayShieldEffect={handleShowShieldEffect}
+				/>
 			</div>
-			{shieldComponent(shipPositions[3], shipPositions[3].toLowerCase(), aft)}
+			<ShieldComponent
+				position={Position.aft}
+				shieldValue={aft}
+				isOpen={isOpen(Position.aft)}
+				toggleDisplayShieldEffect={handleShowShieldEffect}
+			/>
 		</div>
 	);
 }
