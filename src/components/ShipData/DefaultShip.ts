@@ -6,7 +6,7 @@ export const defaultShip: Ship = {
 		name: '',
 		make: '',
 		model: '',
-		class: '',
+		shipClass: '',
 		tier: 0,
 		size: Size.small,
 		speed: 0,
@@ -26,6 +26,7 @@ export const defaultShip: Ship = {
 		},
 		shields: {
 			max: 0,
+			type: '',
 			forShield: [0, 0],
 			port: [0, 0],
 			starboard: [0, 0],

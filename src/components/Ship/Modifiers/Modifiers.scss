@@ -1,0 +1,14 @@
+#modifiers {
+	display: flex;
+}
+
+.modifier {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: black;
+	width: 60px;
+	height: 80px;
+	background-color: white;
+	border: 4px solid green;
+}

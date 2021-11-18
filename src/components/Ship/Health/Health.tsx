@@ -1,11 +1,11 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import ShipContext from 'components/ShipContext';
 import ShieldComponent from './ShieldComponent';
 import { Position } from 'components/ShipData/Ship';
 import './Health.scss';
 
 export default function Health() {
-	const { shipDetails, setShipDetails } = useContext(ShipContext);
+	const { shipDetails } = useContext(ShipContext);
 
 	// [current, total]
 	const { forShield, starboard, aft, port } = { ...shipDetails.info.shields };

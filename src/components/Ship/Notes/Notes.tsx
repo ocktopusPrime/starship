@@ -14,7 +14,8 @@ export default function Notes() {
 	return (
 		<div id='notes' style={{ display: 'flex', flexDirection: 'column' }}>
 			Notes
-			{/* textarea goes here instead of the singular input field */}
+			{/* This could possibly be a list of items */}
+			{/* Textarea goes here instead of the singular input field */}
 			<input
 				type='text'
 				name='notes'

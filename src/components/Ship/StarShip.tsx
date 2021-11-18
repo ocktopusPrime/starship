@@ -1,5 +1,5 @@
 import CargoPassengers from './CargoPassengers/CargoPassengers';
-import CrewPositions from './CrewPositions/CrewPositions';
+import Crew from './Crew/Crew';
 import CriticalDamage from './CriticalDamage/CriticalDamage';
 import ExspansionBays from './ExspansionBays/ExpansionBays';
 import Health from './Health/Health';
@@ -16,15 +16,15 @@ export default function Starship() {
 		<div id='columns'>
 			{/* <ShipInfo /> */}
 			{/* <Weapons position={Position.port} /> */}
-			{/* <CrewPositions /> */}
+			{/* <Crew /> */}
 			{/* <Notes /> */}
 			{/* <Modifiers /> */}
 			{/* <Weapons position={Position.turret} /> */}
 			{/* <Weapons position={Position.for} /> */}
-			<Health />
+			{/* <Health /> */}
 			{/* <Weapons position={Position.aft} /> */}
-			{/* <CriticalDamage /> */}
-			{/* <ShipPortrait /> */}
+			<CriticalDamage />
+			<ShipPortrait />
 			{/* <Weapons position={Position.starboard} /> */}
 			{/* <Systems /> */}
 			{/* <ExspansionBays /> */}

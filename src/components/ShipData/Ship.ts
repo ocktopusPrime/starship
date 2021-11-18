@@ -87,7 +87,7 @@ export interface Info {
 	name: string;
 	make: string;
 	model: string;
-	class: string;
+	shipClass: string;
 	tier: number;
 	size: Size;
 	speed: number;
@@ -127,6 +127,7 @@ export interface Sensor {
 
 export interface Shields {
 	max: number;
+	type: string;
 	// [current, total]
 	forShield: number[];
 	port: number[];
@@ -139,6 +140,7 @@ export interface TargetLock extends Base {
 }
 
 export interface Weapon {
+	id: string;
 	name: string;
 	type: string;
 	range: EquipmentRange;

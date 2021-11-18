@@ -6,10 +6,10 @@ export default function Systems() {
 	const { shipDetails } = useContext(ShipContext);
 	const { systems } = { ...shipDetails };
 
-	// List of items
 	return (
 		<div>
 			<p>Systems</p>
+			{/* Probably a text area */}
 			<Typography>{systems}</Typography>
 		</div>
 	);

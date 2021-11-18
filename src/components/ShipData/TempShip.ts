@@ -3,10 +3,10 @@ import Ship, { Size, Engine, EquipmentRange, Position, Status } from './Ship';
 export const tempShip: Ship = {
 	id: '1',
 	info: {
-		name: 'Temp Ship',
+		name: 'Tie Fighter',
 		make: 'make',
 		model: 'x2j9',
-		class: 'warrior',
+		shipClass: 'warrior',
 		tier: 1,
 		size: Size.small,
 		speed: 2,
@@ -26,6 +26,7 @@ export const tempShip: Ship = {
 		},
 		shields: {
 			max: 60,
+			type: 'medium',
 			forShield: [6, 15],
 			port: [7, 15],
 			starboard: [8, 15],
@@ -40,6 +41,7 @@ export const tempShip: Ship = {
 	},
 	weapons: [
 		{
+			id: '1',
 			name: 'super gun',
 			type: 'turret',
 			range: EquipmentRange.short,
@@ -52,6 +54,7 @@ export const tempShip: Ship = {
 			status: Status.normal
 		},
 		{
+			id: '2',
 			name: 'blat blat',
 			type: 'gat',
 			range: EquipmentRange.medium,
@@ -76,7 +79,27 @@ export const tempShip: Ship = {
 	modifiers: [
 		{
 			skill: 'piloting',
-			value: -2
+			value: -10
+		},
+		{
+			skill: 'gunnery',
+			value: +10
+		},
+		{
+			skill: 'engineering',
+			value: +10
+		},
+		{
+			skill: 'computers',
+			value: +10
+		},
+		{
+			skill: 'diplomacy',
+			value: +10
+		},
+		{
+			skill: 'bluff',
+			value: +10
 		}
 	],
 	image: '',

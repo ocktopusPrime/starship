@@ -6,10 +6,10 @@ export default function ExspansionBays() {
 	const { shipDetails } = useContext(ShipContext);
 	const { expansionBays } = { ...shipDetails };
 
-	// List of items
 	return (
 		<div>
 			<p>Expansion Bays</p>
+			{/* Probably a text area */}
 			<Typography>{expansionBays}</Typography>
 		</div>
 	);

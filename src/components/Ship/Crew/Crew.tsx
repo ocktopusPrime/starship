@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 
 import '../Info/ShipInfo.scss';
 
-export default function CrewPositions() {
+export default function Crew() {
 	const { shipDetails, setShipDetails } = useContext(ShipContext);
 	const { crew } = { ...shipDetails };
 
@@ -18,10 +18,10 @@ export default function CrewPositions() {
 	};
 
 	return (
-		<div id='crew-positions'>
+		<div id='crew'>
 			Crew Positions
 			{Object.entries(crew).map(([attribute, value]) => (
-				<div className='crew'>
+				<div className='crew-positions'>
 					<Typography>{attribute}:</Typography>
 					<input
 						type='text'

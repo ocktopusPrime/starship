@@ -5,7 +5,25 @@ import './ShipInfo.scss';
 
 export default function ShipInfo() {
 	const { shipDetails, setShipDetails } = useContext(ShipContext);
-	const { info } = { ...shipDetails };
+	const {
+		name,
+		make,
+		model,
+		shipClass,
+		size,
+		speed,
+		manuverability,
+		rating,
+		engine,
+		pcu,
+		powercore,
+		shields,
+		sensors
+	} = { ...shipDetails.info };
+
+	const manuverabilityString = `${manuverability.type} Turn ${manuverability.distanceBeforeTurns}, Pilot +${manuverability.pilotingCheckModifier}`;
+	const sensorsString = `${sensors.type} ${sensors.range} range`;
+	const shieldString = `${shields.type} shields ${shields.max}`;
 
 	const handleUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const attribute = event.target.name;
@@ -13,45 +31,37 @@ export default function ShipInfo() {
 		setShipDetails({ ...shipDetails, info: { ...shipDetails.info, [attribute]: value } });
 	};
 
-	const getSubObjects = (value: string) => {
-		return Object.entries(value).map(([att, val]) => (
+	const getInfoField = (label: string, field: string, val: number | string) => {
+		return (
 			<div className='info-text'>
-				<Typography>{att}:</Typography>
-				{typeof val !== 'object' && (
-					<input
-						type='text'
-						name={att}
-						defaultValue={val}
-						placeholder='N/A'
-						onChange={handleUpdate}
-					/>
-				)}
-				{typeof val === 'object' && getSubObjects(val)}
+				<Typography>{label}:</Typography>
+				<input
+					type='text'
+					name={field}
+					defaultValue={val}
+					placeholder='N/A'
+					onChange={handleUpdate}
+				/>
 			</div>
-		));
+		);
 	};
 
 	return (
 		<div id='ship-info'>
 			Ship Info
-			{info &&
-				Object.entries(info).map(([attribute, value]) => {
-					return (
-						<div className='info-text'>
-							<Typography>{attribute}:</Typography>
-							{typeof value !== 'object' && (
-								<input
-									type='text'
-									name={attribute}
-									defaultValue={value}
-									placeholder='N/A'
-									onChange={handleUpdate}
-								/>
-							)}
-							{typeof value === 'object' && getSubObjects(value)}
-						</div>
-					);
-				})}
+			{getInfoField('Ship Name', 'name', name)}
+			{getInfoField('Make', 'make', make)}
+			{getInfoField('Model', 'model', model)}
+			{getInfoField('Class', 'shipClass', shipClass)}
+			{getInfoField('Size', 'size', size)}
+			{getInfoField('Speed', 'speed', speed)}
+			{getInfoField('Manuverability', 'manuverability', manuverabilityString)}
+			{getInfoField('Rating', 'rating', rating)}
+			{getInfoField('Engine', 'engine', engine)}
+			{getInfoField('PCU', 'pcu', pcu)}
+			{getInfoField('Powercore', 'powercore', powercore.core)}
+			{getInfoField('Shields', 'shields', shieldString)}
+			{getInfoField('Sensors', 'sensors', sensorsString)}
 		</div>
 	);
 }

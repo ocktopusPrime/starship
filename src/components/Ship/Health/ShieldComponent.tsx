@@ -22,7 +22,7 @@ export default function ShieldComponent({
 
 	const handleHullUpdate = (val: number, position: string) => {
 		const tempArray: number[] = shipDetails.hull;
-		tempArray[0] = tempArray[0] - val;
+		tempArray[0] = tempArray[0] + val;
 		setShipDetails({ ...shipDetails, hull: { ...shipDetails.hull, [position]: tempArray } });
 	};
 

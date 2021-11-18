@@ -1,0 +1,33 @@
+#ship-portrait {
+	height: 300px;
+	width: 300px;
+	border: 1px solid;
+	overflow: hidden;
+	position: relative;
+}
+
+#animated-background {
+	background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperset.com%2Fw%2Ffull%2F8%2F5%2Fa%2F26663.jpg&f=1&nofb=1')
+		repeat-x;
+	height: 300px;
+	width: 1000px;
+	animation: slide 4s linear infinite;
+}
+
+#foreground-ship {
+	height: 252px;
+	width: 300px;
+	position: absolute;
+	top: 25px;
+	left: 16px;
+	transform: rotate(50deg);
+}
+
+@keyframes slide {
+	0% {
+		transform: translateX(-700px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
