@@ -1,6 +1,8 @@
 import { Tooltip, Typography } from '@mui/material';
 import ShipContext from 'components/ShipContext';
 import { useContext } from 'react';
+import { getToolTip } from '../Weapons/Weapons';
+import './CriticalDamage.scss';
 
 export function titleCase(str: string) {
 	return str.replace(/\w\S*/g, function (txt) {
@@ -21,14 +23,18 @@ export default function CriticalDamage() {
 		>
 			{criticalDamage.map((system) => (
 				<div className='critical-system'>
-					<Tooltip title={system.effect}>
-						<Typography>{titleCase(system.name)}</Typography>
+					<Tooltip enterDelay={700} title={system.effect}>
+						<Typography variant='subtitle2'>{titleCase(system.name)}</Typography>
 					</Tooltip>
 					<Typography variant='subtitle2'>
 						{system.startRange}-{system.endRange}
 					</Typography>
 					{/* get the status component from the weapons */}
-					<Typography>{system.status}</Typography>
+					<Tooltip enterDelay={700} title={getToolTip(system.status)}>
+						<Typography className={`status ${system.status}`}>
+							{system.status[0].toUpperCase()}
+						</Typography>
+					</Tooltip>
 				</div>
 			))}
 		</div>

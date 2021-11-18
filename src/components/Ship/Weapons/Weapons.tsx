@@ -8,7 +8,7 @@ interface Props {
 	position: Position;
 }
 
-const getToolTip = (status: string) => {
+export const getToolTip = (status: string) => {
 	switch (status) {
 		case Status.glitching:
 			return `Crew actions involving the system (except the hold it together and patch engineer actions; see page 323) take a –2 penalty.`;
@@ -71,7 +71,7 @@ export default function Weapons({ position }: Props) {
 									<TableCell>
 										{/* make the status less cycle through, and more click to select */}
 										{/* another consideration is to extract this as a component for anything else that cares about status */}
-										<Tooltip title={getToolTip(status)}>
+										<Tooltip enterDelay={700} title={getToolTip(status)}>
 											<div
 												className={status}
 												onClick={() => handleUpdateWeaponStatus(id, status)}

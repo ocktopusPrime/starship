@@ -30,6 +30,11 @@ export enum Size {
 	colossal = 'colossal'
 }
 
+// change this from enum to object
+// key {
+// 	name,
+// 	effect
+// }
 export enum Status {
 	normal = 'normal',
 	glitching = 'glitching',

@@ -1,0 +1,22 @@
+.status {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 30px;
+	height: 30px;
+	background-color: green;
+	color: black;
+
+	&.wrecked {
+		background-color: orangered;
+	}
+
+	&.malfunctioning {
+		background-color: orange;
+	}
+
+	&.glitching {
+		background-color: gold;
+	}
+}
