@@ -2,21 +2,50 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: auto;
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 20px;
 	background-color: green;
 	color: black;
+	cursor: pointer;
+
+	&.hover {
+		background-color: rgba(0, 128, 0, 0.5);
+	}
 
 	&.wrecked {
 		background-color: orangered;
+		&:hover {
+			background-color: rgba(255, 166, 0, 0.5);
+		}
 	}
 
 	&.malfunctioning {
 		background-color: orange;
+		&:hover {
+			background-color: rgba(255, 166, 0, 0.5);
+		}
 	}
 
 	&.glitching {
 		background-color: gold;
+		&:hover {
+			background-color: rgba(255, 217, 0, 0.5);
+		}
 	}
+
+	&.selected {
+		border: 4px solid black;
+	}
+}
+
+.critical-system {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#critical-damage {
+	display: flex;
+	justify-content: space-between;
+	width: 600px;
 }

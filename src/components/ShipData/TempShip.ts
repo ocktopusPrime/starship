@@ -51,7 +51,7 @@ export const tempShip: Ship = {
 			cost: 5,
 			specialProperties: 'magic',
 			position: Position.turret,
-			status: Status.normal
+			status: Status.glitching
 		},
 		{
 			id: '2',
@@ -126,21 +126,21 @@ export const tempShip: Ship = {
 			endRange: 10,
 			name: 'life support',
 			effect: 'Condition applies to all captain actions',
-			status: Status.normal
+			status: Status.wrecked
 		},
 		{
 			startRange: 11,
 			endRange: 30,
 			name: 'sensors',
 			effect: 'Condition applies to all science officer actions',
-			status: Status.normal
+			status: Status.malfunctioning
 		},
 		{
 			startRange: 31,
 			endRange: 60,
 			name: 'weapons array',
 			effect: 'Randomly determine one arc containing weapons; condition applies to all gunner actions using weapons in that arc (a turret counts as being in all arcs)',
-			status: Status.normal
+			status: Status.glitching
 		},
 		{
 			startRange: 61,

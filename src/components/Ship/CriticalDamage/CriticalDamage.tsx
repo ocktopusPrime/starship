@@ -1,7 +1,7 @@
 import { Tooltip, Typography } from '@mui/material';
 import ShipContext from 'components/ShipContext';
 import { useContext } from 'react';
-import { getToolTip } from '../Weapons/Weapons';
+import SystemStatus from '../Status/SystemStatus';
 import './CriticalDamage.scss';
 
 export function titleCase(str: string) {
@@ -14,26 +14,20 @@ export default function CriticalDamage() {
 	const { shipDetails } = useContext(ShipContext);
 	const { criticalDamage } = { ...shipDetails };
 
-	// add the ability to toggle buttons/graphics to update the status for each system
-	// create tooltips for each of the system status types
 	return (
-		<div
-			id='critical-damage'
-			style={{ display: 'flex', justifyContent: 'space-between', width: '600px' }}
-		>
+		<div id='critical-damage'>
 			{criticalDamage.map((system) => (
 				<div className='critical-system'>
+					<SystemStatus currentStatus={system.status} currentSystem={system.name} />
 					<Tooltip enterDelay={700} title={system.effect}>
-						<Typography variant='subtitle2'>{titleCase(system.name)}</Typography>
-					</Tooltip>
-					<Typography variant='subtitle2'>
-						{system.startRange}-{system.endRange}
-					</Typography>
-					{/* get the status component from the weapons */}
-					<Tooltip enterDelay={700} title={getToolTip(system.status)}>
-						<Typography className={`status ${system.status}`}>
-							{system.status[0].toUpperCase()}
-						</Typography>
+						<div>
+							<Typography variant='subtitle2'>
+								{system.startRange}-{system.endRange}
+							</Typography>
+							<Typography variant='subtitle2'>
+								{titleCase(system.name)}
+							</Typography>
+						</div>
 					</Tooltip>
 				</div>
 			))}
